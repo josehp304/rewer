@@ -1,10 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { Menu, X, Code2, Palette, Globe2, ChevronRight } from 'lucide-react'
+import { Menu, X, Code2, Smartphone, Globe2, ChevronRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import ContactModal from './ContactModal'
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const services = [
     {
@@ -13,9 +16,9 @@ export default function Home() {
       description: "Custom websites and web applications built with modern technologies"
     },
     {
-      icon: <Palette className="w-12 h-12 text-[#f3be1a]" />,
-      title: "UI/UX Design",
-      description: "Beautiful, intuitive interfaces that users love"
+      icon: <Smartphone className="w-12 h-12 text-[#f3be1a]" />,
+      title: "Mobile App Development",
+      description: "Innovative mobile applications for iOS and Android platforms"
     },
     {
       icon: <Globe2 className="w-12 h-12 text-[#f3be1a]" />,
@@ -24,8 +27,14 @@ export default function Home() {
     }
   ]
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  }
+
   return (
     <div className="min-h-screen bg-[#fff4ce]">
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       {/* Navigation */}
       <nav className="bg-[#fff4ce] shadow-sm fixed w-full z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,7 +49,7 @@ export default function Home() {
               <a href="#services" className="text-[#2f3744] hover:text-[#f3be1a]">Services</a>
 
               <a href="#contact" className="text-[#2f3744] hover:text-[#f3be1a]">Contact</a>
-              <button className="bg-[#f3be1a] text-[#2f3744] px-6 py-2 rounded-full hover:bg-[#acb5bc] transition-colors">
+              <button onClick={() => setIsModalOpen(true)} className="bg-[#f3be1a] text-[#2f3744] px-6 py-2 rounded-full hover:bg-[#acb5bc] transition-colors">
                 Get Started
               </button>
             </div>
@@ -62,9 +71,9 @@ export default function Home() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#fff4ce] shadow-lg">
               <a href="#services" className="block px-3 py-2 text-[#2f3744] hover:text-[#f3be1a]">Services</a>
-              <a href="#work" className="block px-3 py-2 text-[#2f3744] hover:text-[#f3be1a]">Our Work</a>
+              {/* <a href="#work" className="block px-3 py-2 text-[#2f3744] hover:text-[#f3be1a]">Our Work</a> */}
               <a href="#contact" className="block px-3 py-2 text-[#2f3744] hover:text-[#f3be1a]">Contact</a>
-              <button className="w-full text-left px-3 py-2 text-[#f3be1a] font-medium">
+              <button onClick={() => setIsModalOpen(true)} className="w-full text-left px-3 py-2 text-[#f3be1a] font-medium">
                 Get Started
               </button>
             </div>
@@ -85,7 +94,7 @@ export default function Home() {
               for forward-thinking companies.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="bg-[#f3be1a] text-[#2f3744] px-8 py-3 rounded-full hover:bg-[#acb5bc] transition-colors flex items-center justify-center">
+              <button onClick={() => setIsModalOpen(true)} className="bg-[#f3be1a] text-[#2f3744] px-8 py-3 rounded-full hover:bg-[#acb5bc] transition-colors flex items-center justify-center">
                 Start Your Project <ChevronRight className="ml-2 h-5 w-5" />
               </button>
 
@@ -105,18 +114,22 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="bg-[#ffffff] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-[#acb5bc]">
+              <motion.div
+                key={index}
+                className="bg-[#ffffff] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-[#acb5bc]"
+                initial="hidden"
+                animate="visible"
+                variants={cardVariants}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
                 {service.icon}
                 <h3 className="text-xl font-semibold mt-4 mb-2 text-[#2f3744]">{service.title}</h3>
                 <p className="text-[#2f3744]">{service.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
-
-
-      
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -128,7 +141,7 @@ export default function Home() {
             </p>
           </div>
           <div className="max-w-xl mx-auto">
-            <button className="w-full bg-[#f3be1a] text-[#2f3744] px-8 py-4 rounded-full hover:bg-[#acb5bc] transition-colors text-lg font-medium">
+            <button onClick={() => setIsModalOpen(true)} className="w-full bg-[#f3be1a] text-[#2f3744] px-8 py-4 rounded-full hover:bg-[#acb5bc] transition-colors text-lg font-medium">
               Contact Us
             </button>
           </div>
@@ -145,7 +158,7 @@ export default function Home() {
             </div>
             <div className="flex space-x-8">
               <a href="#services" className="text-[#acb5bc] hover:text-white">Services</a>
-              <a href="#work" className="text-[#acb5bc] hover:text-white">Work</a>
+              {/* <a href="#work" className="text-[#acb5bc] hover:text-white">Work</a> */}
               <a href="#contact" className="text-[#acb5bc] hover:text-white">Contact</a>
             </div>
           </div>

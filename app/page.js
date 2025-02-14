@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Menu, X, Code2, Smartphone, Globe2, ChevronRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import ContactModal from './ContactModal'
+import { testConnection } from './supabaseinit'
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -32,6 +33,10 @@ export default function Home() {
     visible: { opacity: 1, y: 0 }
   }
 
+  useEffect(() => {
+    testConnection()
+  }, [])
+
   return (
     <div className="min-h-screen bg-[#fff4ce]">
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
@@ -41,7 +46,7 @@ export default function Home() {
           <div className="flex justify-between h-16">
             <div className="flex-shrink-0 flex items-center">
               <img src="/images/favicon.png" alt="Logo" className="h-10 w-10 mr-2" />
-              <span className="text-2xl font-bold text-[#f3be1a]">REWER</span>
+              <span className="text-2xl font-bold text-[#2f3744]">REWER</span>
             </div>
             
             {/* Desktop Navigation */}
@@ -71,7 +76,6 @@ export default function Home() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#fff4ce] shadow-lg">
               <a href="#services" className="block px-3 py-2 text-[#2f3744] hover:text-[#f3be1a]">Services</a>
-              {/* <a href="#work" className="block px-3 py-2 text-[#2f3744] hover:text-[#f3be1a]">Our Work</a> */}
               <a href="#contact" className="block px-3 py-2 text-[#2f3744] hover:text-[#f3be1a]">Contact</a>
               <button onClick={() => setIsModalOpen(true)} className="w-full text-left px-3 py-2 text-[#f3be1a] font-medium">
                 Get Started
@@ -158,7 +162,6 @@ export default function Home() {
             </div>
             <div className="flex space-x-8">
               <a href="#services" className="text-[#acb5bc] hover:text-white">Services</a>
-              {/* <a href="#work" className="text-[#acb5bc] hover:text-white">Work</a> */}
               <a href="#contact" className="text-[#acb5bc] hover:text-white">Contact</a>
             </div>
           </div>

@@ -13,7 +13,7 @@ import Typewriter from 'typewriter-effect'
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
-
+  const [isPortrait,setIsPortrait]  = useState(false)
 
 
   const services = [
@@ -33,12 +33,30 @@ export default function Home() {
       description: "Strategic marketing solutions to grow your online presence"
     }
   ]
+  useEffect(() => {
+    // Check initial orientation
+    setIsPortrait(window.innerHeight > window.innerWidth)
+
+    // Add event listener for orientation changes
+    const handleResize = () => {
+      setIsPortrait(window.innerHeight > window.innerWidth)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])  
 
   const cardVariants = {
-    hidden: { opacity: 0, x: 100 },
+    hidden: isPortrait?{ opacity: 0, x: 100,rotate:20 }: { opacity: 0, y: -100,rotate:10 },
     visible: { 
-      opacity: 1,
-      x: 0,
+      opacity:1,
+      x:0,
+      y:0,
+      rotate:0,
       transition:{
         delay:0.5,
         default:{type:"spring"},

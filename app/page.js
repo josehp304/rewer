@@ -119,7 +119,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#2f3744] mb-4">Our Services</h2>
@@ -127,7 +127,7 @@ export default function Home() {
               We offer comprehensive digital solutions to help your business thrive in the modern world.
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8  ">
             {services.map((service, index) => (
               <motion.div
                 key={index}

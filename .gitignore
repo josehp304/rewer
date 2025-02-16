@@ -13,7 +13,7 @@ dist
 dist-ssr
 *.local
 .bolt
-.next         # Next.js build output
+.next/         # Next.js build output
 out/          # Next.js static export
 .vercel       # Vercel deployment data
 

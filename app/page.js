@@ -13,7 +13,7 @@ import Typewriter from 'typewriter-effect'
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isPortrait,setIsPortrait]  = useState(false)
+
 
 
   const services = [
@@ -33,30 +33,12 @@ export default function Home() {
       description: "Strategic marketing solutions to grow your online presence"
     }
   ]
-  useEffect(() => {
-    // Check initial orientation
-    setIsPortrait(window.innerHeight > window.innerWidth)
-
-    // Add event listener for orientation changes
-    const handleResize = () => {
-      setIsPortrait(window.innerHeight > window.innerWidth)
-    }
-
-    window.addEventListener('resize', handleResize)
-
-    // Cleanup
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])  
 
   const cardVariants = {
-    hidden: isPortrait?{ opacity: 0, x: 100,rotate:20 }: { opacity: 0, y: -100,rotate:10 },
+    hidden: { opacity: 0, x: 100 },
     visible: { 
-      opacity:1,
-      x:0,
-      y:0,
-      rotate:0,
+      opacity: 1,
+      x: 0,
       transition:{
         delay:0.5,
         default:{type:"spring"},
@@ -64,7 +46,7 @@ export default function Home() {
       }
       }
   }
-
+  
 
 
   return (
@@ -89,33 +71,60 @@ export default function Home() {
               </motion.button>
             </div>
 
-            {/* Mobile menu button */}
-            <div className="md:hidden flex items-center">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-[#2f3744] hover:text-[#f3be1a]"
-              >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </button>
-            </div>
-          </div>
-        </div>
+           { /* Mobile menu button */}
+                  <div className="md:hidden flex items-center">
+                    <motion.button
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="text-[#2f3744] hover:text-[#f3be1a]"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    >
+                    {isMenuOpen ? (
+                      <motion.div
+                      key="close"
+                      initial={{ rotate: 0 }}
+                      animate={{ rotate: 180 }}
+                      exit={{ rotate: 0 }}
+                      >
+                      <X className="h-6 w-6" />
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                      key="menu"
+                      initial={{ rotate: 0 }}
+                      animate={{ rotate: 180 }}
+                      exit={{ rotate: 0 }}
+                      >
+                      <Menu className="h-6 w-6" />
+                      </motion.div>
+                    )}
+                    </motion.button>
+                  </div>
+                  </div>
+                </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#fff4ce] shadow-lg">
-              <a href="#services" className="block px-3 py-2 text-[#2f3744] hover:text-[#f3be1a]">Services</a>
-              <a href="#contact" className="block px-3 py-2 text-[#2f3744] hover:text-[#f3be1a]">Contact</a>
-              <button onClick={() => setIsModalOpen(true)} className="w-full text-left px-3 py-2 text-[#f3be1a] font-medium">
-                Get Started
-              </button>
-            </div>
-          </div>
-        )}
-      </nav>
+                {/* Mobile Navigation */}
+          {isMenuOpen && (
+            <motion.div 
+              className="md:hidden"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            >
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#fff4ce] shadow-lg">
+                <a href="#services" className="block px-3 py-2 text-[#2f3744] hover:text-[#f3be1a]">Services</a>
+                <a href="#contact" className="block px-3 py-2 text-[#2f3744] hover:text-[#f3be1a]">Contact</a>
+                <button onClick={() => setIsModalOpen(true)} className="w-full text-left px-3 py-2 text-[#f3be1a] font-medium">
+            Get Started
+                </button>
+              </div>
+            </motion.div>
+          )}
+              </nav>
 
-      {/* Hero Section */}
+              {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#fff4ce] to-[#ffffff]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">

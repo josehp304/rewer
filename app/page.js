@@ -5,6 +5,7 @@ import { Menu, X, Code2, Smartphone, Globe2, ChevronRight } from 'lucide-react'
 import { circOut, motion,type } from 'framer-motion'
 import ContactModal from './ContactModal'
 import { testConnection } from './supabaseinit'
+import Typewriter from 'typewriter-effect'
 
 
 
@@ -101,8 +102,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#2f3744] mb-6">
-              Transforming Ideas into
-              <span className="text-[#f3be1a]"> Digital Reality</span>
+              <Typewriter options={{
+                                    strings:["Transform Idea into Digital Reality","We Build Exceptional Digital Experiences","We Create Digital Excellence"],
+                                    loop:true,
+                                    autoStart:true, 
+              }} className="inline"/>
+       
+              
             </h1>
             <p className="text-lg sm:text-xl text-[#2f3744] mb-8 max-w-2xl mx-auto">
               We're a team of passionate creators building exceptional digital experiences

@@ -2,13 +2,18 @@
 
 import { useState, useEffect } from 'react'
 import { Menu, X, Code2, Smartphone, Globe2, ChevronRight } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { circOut, motion,type } from 'framer-motion'
 import ContactModal from './ContactModal'
 import { testConnection } from './supabaseinit'
+
+
+
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+
 
   const services = [
     {
@@ -29,17 +34,23 @@ export default function Home() {
   ]
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+    hidden: { opacity: 0, x: 100 },
+    visible: { 
+      opacity: 1,
+      x: 0,
+      transition:{
+        delay:0.5,
+        default:{type:"spring"},
+        duration:0
+      }
+      }
   }
 
-  useEffect(() => {
-    testConnection()
-  }, [])
+
 
   return (
     <div className="min-h-screen bg-[#fff4ce]">
-      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}  />
       {/* Navigation */}
       <nav className="bg-[#fff4ce] shadow-sm fixed w-full z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,9 +65,9 @@ export default function Home() {
               <a href="#services" className="text-[#2f3744] hover:text-[#f3be1a]">Services</a>
 
               <a href="#contact" className="text-[#2f3744] hover:text-[#f3be1a]">Contact</a>
-              <button onClick={() => setIsModalOpen(true)} className="bg-[#f3be1a] text-[#2f3744] px-6 py-2 rounded-full hover:bg-[#acb5bc] transition-colors">
+              <motion.button whileHover={{rotate:5,scale:1.05}} onClick={() => setIsModalOpen(true)} className="bg-[#f3be1a] text-[#2f3744] px-6 py-2 rounded-full  transition-colors">
                 Get Started
-              </button>
+              </motion.button>
             </div>
 
             {/* Mobile menu button */}
@@ -98,9 +109,9 @@ export default function Home() {
               for forward-thinking companies.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button onClick={() => setIsModalOpen(true)} className="bg-[#f3be1a] text-[#2f3744] px-8 py-3 rounded-full hover:bg-[#acb5bc] transition-colors flex items-center justify-center">
+              <motion.button whileHover={isModalOpen?{}:{rotate:5,scale:1.05}} exit={{opacity:0}} whileTap={{scale:0.99}} transition={isModalOpen?{duration:0}:{duration:0.1}} onClick={() => setIsModalOpen(true)} className={`${isModalOpen?"":""}  bg-[#f3be1a] text-[#2f3744] px-8 py-3 rounded-full hover:bg-[#acb5bc] transition-colors flex items-center justify-center`}>
                 Start Your Project <ChevronRight className="ml-2 h-5 w-5" />
-              </button>
+              </motion.button>
 
             </div>
           </div>
@@ -122,9 +133,11 @@ export default function Home() {
                 key={index}
                 className="bg-[#ffffff] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-[#acb5bc]"
                 initial="hidden"
-                animate="visible"
+                whileInView="visible"
+                whileHover={{scale:1.05,rotate:5}}
+                transition={{delay:index*0.2}}
                 variants={cardVariants}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                // transition={{ duration: 0.5, delay: index * 0.2 }}
               >
                 {service.icon}
                 <h3 className="text-xl font-semibold mt-4 mb-2 text-[#2f3744]">{service.title}</h3>

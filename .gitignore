@@ -7,11 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies and build outputs
 node_modules
 dist
 dist-ssr
 *.local
 .bolt
+.next         # Next.js build output
+out/          # Next.js static export
+.vercel       # Vercel deployment data
 
 # Editor directories and files
 .vscode/*

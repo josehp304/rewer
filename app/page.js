@@ -41,9 +41,7 @@ export default function Home() {
       }
     }
   }
-  const ballVariant = {
-    animate:{ x: 100, y: 100, rotate:  180 },
-  }
+
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -99,32 +97,32 @@ export default function Home() {
       </nav>ī
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black to-gray-900">
-      <motion.div className='absolute top-[300px] left-[200px] h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0'  ></motion.div>
-      <motion.div className='absolute top-[20px] left-400 h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0'></motion.div>
-      <div className="relative max-w-7xl mx-auto z-1">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
-              {!isModalOpen && (<Typewriter options={{
-                                    strings:["Transform Idea into Digital Reality","We Build Exceptional Digital Experiences","We Create Digital Excellence"],
-                                    loop:true,
-                                    autoStart:true, 
-              }} className={isModalOpen?"inline hidden ":"inline"}/>)}
-            </h1>
-            <p className="text-lg sm:text-xl text-white mb-8 max-w-2xl mx-auto">
-              We're a team of passionate creators building exceptional digital experiences
-              for forward-thinking companies.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <motion.button whileHover={isModalOpen?{}:{rotate:5,scale:1.05}} exit={{opacity:0}} whileTap={{scale:0.99}} transition={isModalOpen?{duration:0}:{duration:0.1}} onClick={() => setIsModalOpen(true)} className={`${isModalOpen?"":""}  bg-[#f3be1a] text-black px-8 py-3 rounded-full hover:bg-[#acb5bc] transition-colors flex items-center justify-center`}>
-                Start Your Project <ChevronRight className="ml-2 h-5 w-5" />
-              </motion.button>
+        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black to-gray-900">
+        {/* <motion.div className='absolute top-[300px] left-[200px] h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0' animate={{ x: [0, 100, 0], y: [0, 100, 0], rotate: [0, 180, 0] }} transition={{ repeat: Infinity, duration: 5 }}></motion.div> */}
+        {/* <motion.div className='absolute top-[20px] left-[400px] h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0' animate={{ x: [0, -100, 0], y: [0, -100, 0], rotate: [0, -180, 0] }} transition={{ repeat: Infinity, duration: 5 }}></motion.div> */}
+        <div className=" max-w-7xl mx-auto z-1">
+            <div className="text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+            {!isModalOpen && (<Typewriter options={{
+                  strings:["Transform Idea into Digital Reality","We Build Exceptional Digital Experiences","We Create Digital Excellence"],
+                  loop:true,
+                  autoStart:true, 
+            }} className={isModalOpen?"inline hidden ":"inline"}/>)}
+          </h1>
+          <p className="text-lg sm:text-xl text-white mb-8 max-w-2xl mx-auto">
+            We're a team of passionate creators building exceptional digital experiences
+            for forward-thinking companies.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <motion.button whileHover={isModalOpen?{}:{rotate:5,scale:1.05}} exit={{opacity:0}} whileTap={{scale:0.99}} transition={isModalOpen?{duration:0}:{duration:0.1}} onClick={() => setIsModalOpen(true)} className={`${isModalOpen?"":""}  bg-[#f3be1a] text-black px-8 py-3 rounded-full hover:bg-[#acb5bc] transition-colors flex items-center justify-center`}>
+              Start Your Project <ChevronRight className="ml-2 h-5 w-5" />
+            </motion.button>
+          </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Services Section */}
+        {/* Services Section */}
       <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">

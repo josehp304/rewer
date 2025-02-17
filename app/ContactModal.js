@@ -22,7 +22,7 @@ export default function ContactModal({ isOpen, onClose }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-        <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+        <h2 className="text-2xl font-bold mb-4">Connect with Us</h2>
         <form >
           <div className="mb-4">
             <label className="block text-gray-700" htmlFor='name'>Name</label>

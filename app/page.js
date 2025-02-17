@@ -133,7 +133,7 @@ export default function Home() {
                                     strings:["Transform Idea into Digital Reality","We Build Exceptional Digital Experiences","We Create Digital Excellence"],
                                     loop:true,
                                     autoStart:true, 
-              }} className="inline"/>
+              }} className={`${isModalOpen?"inline hidden":"inline"}`}/>
        
               
             </h1>

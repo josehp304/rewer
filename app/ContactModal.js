@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from 'react';
 import {supabase, testConnection} from './supabaseinit'
+import { Menu, X, Code2, Smartphone, Globe2, ChevronRight } from 'lucide-react'
 export default function ContactModal({ isOpen, onClose }) {
   let[name,setName]=useState('')
   let[phno,setPhno]=useState('')  
@@ -20,9 +21,12 @@ export default function ContactModal({ isOpen, onClose }) {
 }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center ">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-        <h2 className="text-2xl font-bold mb-4">Connect with Us</h2>
+      <X className="ml-auto" onClick={()=>{onClose()}}/>
+        <div className="w-full  flex justify-between items-center"><h2 className="text-2xl font-bold mb-4 inline">Connect with Us</h2> </div>
+         
+        
         <form >
           <div className="mb-4">
             <label className="block text-gray-700" htmlFor='name'>Name</label>
@@ -39,8 +43,8 @@ export default function ContactModal({ isOpen, onClose }) {
 
       
           <div className="flex justify-end">
-            <button type="button" onClick={onClose} className="mr-4 px-4 py-2 bg-gray-300 rounded-lg">Cancel</button>
-            <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-lg" onClick={(e)=>{handleSubmit(e)}}>Submit</button>
+            
+            <button type="submit" className="px-4 py-2 bg-[#f3be1a] text-black rounded-lg w-full  " onClick={(e)=>{handleSubmit(e)}}>Submit</button>
           </div>
         </form>
 

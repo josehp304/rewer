@@ -21,7 +21,7 @@ export default function ContactModal({ isOpen, onClose }) {
 }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center ">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center absolute z-50">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
       <X className="ml-auto text-black" onClick={()=>{onClose()}}/>
         <div className="w-full  flex justify-between items-center"><h2 className="text-2xl font-bold mb-4 inline text-black">Connect with Us</h2> </div>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Menu, X, Code2, Smartphone, Globe2, ChevronRight } from 'lucide-react'
-import { circOut, motion, type } from 'framer-motion'
+import { circOut, motion, type,useScroll } from 'framer-motion'
 import ContactModal from './ContactModal'
 import { testConnection } from './supabaseinit'
 import Typewriter from 'typewriter-effect'
@@ -10,7 +10,7 @@ import Typewriter from 'typewriter-effect'
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
-
+  const {scrollYProgress}=useScroll()
   const services = [
     {
       icon: <Code2 className="w-12 h-12 text-[#f3be1a]" />,
@@ -41,6 +41,7 @@ export default function Home() {
       }
     }
   }
+
 
 
   return (
@@ -94,7 +95,8 @@ export default function Home() {
             </div>
           </motion.div>
         )}
-      </nav>ī
+      </nav>
+        <motion.div className={`fixed z-20 top-0 left-0 right-0 h-[70px]   bg-[#f3be1a] `} style={{scaleX:scrollYProgress}}  >hi</motion.div>
 
       {/* Hero Section */}
         <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black to-gray-900 overflow-hidden relative h-[100vh]">
@@ -121,10 +123,10 @@ export default function Home() {
           </div>
             </div>
           </div>
-        <motion.div className='absolute bottom-0 left-0 h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0 ' animate={{ x: ["10vw", "50vw","80vw", "30vw","10vw"], top: ["20vh","40vh","80vh","40vh","20vh"], rotate: [0,-180,0, 180, 0] }} transition={{ repeat: Infinity, duration:20, ease:['easeInOut','easeInOut','easeInOut','easeInOut','easeInOut',]  }}></motion.div>
-        <motion.div className='absolute top-[calc(20vh)] left-0 h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0' animate={{ x: ["80vw","50vw", "10vw", "50vw","80vw"], top: ["190px","230px","300px","230px","190px"], rotate: [0, -180,0,-180, 0] }} transition={{ repeat: Infinity, duration: 20,ease:['easeInOut','easeInOut','easeInOut','easeInOut','easeInOut']  }}></motion.div>
-        <motion.div className='absolute bottom-[calc(80vw)] left-0 h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0 ' animate={{ x: ["10vw", "50vw","80vw", "30vw","10vw"], top: ["20vh","40vh","80vh","40vh","20vh"], rotate: [0,-180,0, 180, 0] }} transition={{ repeat: Infinity, duration:20, ease:['easeInOut','easeInOut','easeInOut','easeInOut','easeInOut',]  }}></motion.div>
-        <motion.div className='absolute left-[calc(50vw)] top-[calc(80vh)] left-0 h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0' animate={{ x: ["80vw","50vw", "10vw", "50vw","80vw"], top: ["190px","230px","300px","230px","190px"], rotate: [0, -180,0,-180, 0] }} transition={{ repeat: Infinity, duration: 20,ease:['easeInOut','easeInOut','easeInOut','easeInOut','easeInOut']  }}></motion.div>
+        <motion.div className='opacity-0 absolute bottom-[0px] left-[0px] h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-1 ' animate={{opacity:1, x: ["10vw", "50vw","80vw", "30vw","10vw"], top: ["20vh","40vh","80vh","40vh","20vh"], rotate: [0,-180,0, 180, 0] }} transition={{opacity:{duration:0.2, delay:2},delay:1, repeat: Infinity, duration:20, ease:['easeOut','easeInOut','easeInOut','easeInOut','easeInOut',]  }}></motion.div>
+        <motion.div className='opacity-0 absolute top-[10vh] left-[300px] h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-1' animate={{opacity:1, x: ["80vw","50vw", "10vw", "50vw","80vw"], top: ["190px","230px","300px","230px","190px"], rotate: [0, -180,0,-180, 0] }} transition={{opacity:{duration:0.2,delay:3},delay:2, repeat: Infinity, duration: 20,ease:['easeOut','easeInOut','easeInOut','easeInOut','easeInOut']  }}></motion.div>
+        <motion.div className='opacity-0 absolute bottom-[calc(80vw)] left-0 h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-1 ' animate={{opacity:1, x: ["10vw", "50vw","80vw", "30vw","10vw"], top: ["20vh","40vh","80vh","40vh","20vh"], rotate: [0,-180,0, 180, 0] }} transition={{opacity:{duration:0.2,delay:3.5},delay:2.5, repeat: Infinity, duration:20, ease:['easeOut','easeInOut','easeInOut','easeInOut','easeInOut',]  }}></motion.div>
+        <motion.div className='opacity-0 absolute left-[10vw] top-[50vh] left-0 h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-1' animate={{opacity:1, x: ["80vw","50vw", "10vw", "50vw","80vw"], top: ["190px","230px","300px","230px","190px"], rotate: [0, -180,0,-180, 0] }} transition={{opacity:{duration:0.2,delay:2.5},delay:1.5, repeat: Infinity, duration: 20,ease:['easeInOut','easeInOut','easeInOut','easeInOut','easeInOut']  }}></motion.div>
         </section>
 
         {/* Services Section */}

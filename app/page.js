@@ -97,29 +97,34 @@ export default function Home() {
       </nav>ī
 
       {/* Hero Section */}
-        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black to-gray-900">
-        {/* <motion.div className='absolute top-[300px] left-[200px] h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0' animate={{ x: [0, 100, 0], y: [0, 100, 0], rotate: [0, 180, 0] }} transition={{ repeat: Infinity, duration: 5 }}></motion.div> */}
-        {/* <motion.div className='absolute top-[20px] left-[400px] h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0' animate={{ x: [0, -100, 0], y: [0, -100, 0], rotate: [0, -180, 0] }} transition={{ repeat: Infinity, duration: 5 }}></motion.div> */}
-        <div className=" max-w-7xl mx-auto z-1">
+        <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black to-gray-900 overflow-hidden relative h-[100vh]">
+        
+        <div className=" relative max-w-7xl mx-auto z-10">
             <div className="text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+              <div className="min-h-[340px]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 min-h-[150px]">
             {!isModalOpen && (<Typewriter options={{
                   strings:["Transform Idea into Digital Reality","We Build Exceptional Digital Experiences","We Create Digital Excellence"],
                   loop:true,
                   autoStart:true, 
-            }} className={isModalOpen?"inline hidden ":"inline"}/>)}
+            }} className={isModalOpen?"inline hidden ":"inline "}/>)}
           </h1>
-          <p className="text-lg sm:text-xl text-white mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white mb-8 max-w-2xl mx-auto ">
             We're a team of passionate creators building exceptional digital experiences
             for forward-thinking companies.
           </p>
+          </div>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <motion.button whileHover={isModalOpen?{}:{rotate:5,scale:1.05}} exit={{opacity:0}} whileTap={{scale:0.99}} transition={isModalOpen?{duration:0}:{duration:0.1}} onClick={() => setIsModalOpen(true)} className={`${isModalOpen?"":""}  bg-[#f3be1a] text-black px-8 py-3 rounded-full hover:bg-[#acb5bc] transition-colors flex items-center justify-center`}>
-              Start Your Project <ChevronRight className="ml-2 h-5 w-5" />
+              Start Your Project <ChevronRight className="ml-2 h-5 w-5 " />
             </motion.button>
           </div>
             </div>
           </div>
+        <motion.div className='absolute bottom-0 left-0 h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0 ' animate={{ x: ["10vw", "50vw","80vw", "30vw","10vw"], top: ["20vh","40vh","80vh","40vh","20vh"], rotate: [0,-180,0, 180, 0] }} transition={{ repeat: Infinity, duration:20, ease:['easeInOut','easeInOut','easeInOut','easeInOut','easeInOut',]  }}></motion.div>
+        <motion.div className='absolute top-[calc(20vh)] left-0 h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0' animate={{ x: ["80vw","50vw", "10vw", "50vw","80vw"], top: ["190px","230px","300px","230px","190px"], rotate: [0, -180,0,-180, 0] }} transition={{ repeat: Infinity, duration: 20,ease:['easeInOut','easeInOut','easeInOut','easeInOut','easeInOut']  }}></motion.div>
+        <motion.div className='absolute bottom-[calc(80vw)] left-0 h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0 ' animate={{ x: ["10vw", "50vw","80vw", "30vw","10vw"], top: ["20vh","40vh","80vh","40vh","20vh"], rotate: [0,-180,0, 180, 0] }} transition={{ repeat: Infinity, duration:20, ease:['easeInOut','easeInOut','easeInOut','easeInOut','easeInOut',]  }}></motion.div>
+        <motion.div className='absolute left-[calc(50vw)] top-[calc(80vh)] left-0 h-[100px] w-[100px] bg-gradient-to-r from-[#f5a002] to-[#000000] rounded-full z-0' animate={{ x: ["80vw","50vw", "10vw", "50vw","80vw"], top: ["190px","230px","300px","230px","190px"], rotate: [0, -180,0,-180, 0] }} transition={{ repeat: Infinity, duration: 20,ease:['easeInOut','easeInOut','easeInOut','easeInOut','easeInOut']  }}></motion.div>
         </section>
 
         {/* Services Section */}
